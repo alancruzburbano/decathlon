@@ -13,15 +13,4 @@ public class TieAcumulator {
         return indexPosition;
     }
 
-    public void setIndexPosition(int indexPosition) {
-        this.indexPosition = indexPosition;
-    }
-
-    public int getResultCompetition() {
-        return resultCompetition;
-    }
-
-    public void setResultCompetition(int resultCompetition) {
-        this.resultCompetition = resultCompetition;
-    }
 }

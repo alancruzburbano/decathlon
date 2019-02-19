@@ -1,5 +1,8 @@
 package com.kuenag.app.model;
 
+/**
+ * This class is the model of the parameters to send to the formula
+ */
 public class CompetitionParams {
 
     private double athleteResult;
@@ -18,31 +21,15 @@ public class CompetitionParams {
         return athleteResult;
     }
 
-    public void setAthleteResult(double athleteResult) {
-        this.athleteResult = athleteResult;
-    }
-
     public double getParameterA() {
         return parameterA;
-    }
-
-    public void setParameterA(double parameterA) {
-        this.parameterA = parameterA;
     }
 
     public double getParameterB() {
         return parameterB;
     }
 
-    public void setParameterB(double parameterB) {
-        this.parameterB = parameterB;
-    }
-
     public double getParameterC() {
         return parameterC;
-    }
-
-    public void setParameterC(double parameterC) {
-        this.parameterC = parameterC;
     }
 }

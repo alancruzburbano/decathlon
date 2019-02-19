@@ -12,6 +12,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+
+/**
+ * Class that will transform the Results object in a xml file using JAXB
+ *
+ * @author Alvaro Andres Cruz Burbano
+ */
 public class DecathlonObjectTransformer {
 
     public static void jaxbObjectToXML(Results resultList) {

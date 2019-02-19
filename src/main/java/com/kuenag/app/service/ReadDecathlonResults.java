@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * This Class implements a simple contract
  * Is a service that  returns a SourceReadable (contract)
- * that could be from file or database
+ * that could be from file or a different origin
  *
  * @author Alvaro Andres Cruz Burbano
  */

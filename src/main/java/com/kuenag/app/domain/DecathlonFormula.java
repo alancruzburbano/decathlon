@@ -6,15 +6,17 @@ import com.kuenag.app.utils.Constants;
 
 import java.util.StringTokenizer;
 
+/**
+ * Static Class that contains the decathlon formula operations
+ *
+ * @author Alvaro Andres Cruz Burbano
+ */
 public class DecathlonFormula {
 
-    private static Calculator evaluateResultTrackEvent = (formValues) -> {
-        int result = (int) (formValues.getParameterA() * (Math.pow(Math.abs((formValues.getParameterB() - formValues.getAthleteResult())), formValues.getParameterC())));
-        if (result > 0)
-            return result;
-        else
-            return 0;
-    };
+    /**
+     * Lambda expression to calculate the formula in track event
+     */
+    private static Calculator evaluateResultTrackEvent = (formValues) -> (int) (formValues.getParameterA() * (Math.pow(Math.abs((formValues.getParameterB() - formValues.getAthleteResult())), formValues.getParameterC())));
 
     public static int evaluateDecathlonFormula(DecathlonResult athleteResults){
         double result =

@@ -7,23 +7,44 @@ import com.kuenag.app.service.ReadData;
 import com.kuenag.app.service.ReadDecathlonResults;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+/**
+ * Class that perform operations over DecathlonResult list of items
+ *
+ * @author Alvaro Andres Cruz Burbano
+ */
 public class OrderDecathlonResults {
 
-    public void createOrderedResultsReport(){
-        ReadData readContactList = new ReadDecathlonResults();
+    Logger logger = Logger.getLogger(OrderDecathlonResults.class.getName());
+
+    public Results createOrderedResultsReport(){
+        logger.log(Level.INFO, "Decathlon report generation has started");
+                ReadData readContactList = new ReadDecathlonResults();
         List<DecathlonResult> competitionResults = readContactList.readDecathlonResultsFromFile();
         for (DecathlonResult itemResult: competitionResults) {
+            logger.log(Level.INFO, String.format("Calculating score for athelte: %s",itemResult.getAthleteName()));
             itemResult.setTotalPoints(DecathlonFormula.evaluateDecathlonFormula(itemResult));
         }
-        competitionResults.sort(Comparator.comparing(o -> o.getTotalPoints()));
+        logger.log(Level.INFO, "Organizing results by score...");
+        Collections.sort(competitionResults, Collections.reverseOrder(Comparator.comparing(o -> o.getTotalPoints())));
         Results res = new Results(definePositions(competitionResults));
         DecathlonObjectTransformer.jaxbObjectToXML(res);
+        logger.log(Level.INFO, "Report generated, review output directory...");
+        return res;
     }
 
+    /**
+     * This method define the position based on the final score by athlete and resolve ties if is the case
+     * @param orderedResults
+     * @return
+     */
     private List<DecathlonResult>  definePositions(List<DecathlonResult> orderedResults){
+        logger.log(Level.INFO, "Defining positions based on final results...");
         int index=0;
         List<TieAcumulator> tieList = new ArrayList<>();
         while(index < orderedResults.size()){

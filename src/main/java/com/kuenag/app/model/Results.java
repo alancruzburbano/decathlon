@@ -5,6 +5,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
+/**
+ * This is the result model, to be transformed into a xml file
+ */
+
+
 @XmlRootElement(name = "decathlonResults")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Results {
@@ -15,6 +20,10 @@ public class Results {
 
     public Results(List<DecathlonResult> results) {
         this.results = results;
+    }
+
+    public List<DecathlonResult> getResults() {
+        return results;
     }
 
 }

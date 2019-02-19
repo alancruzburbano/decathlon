@@ -2,7 +2,6 @@ package com.kuenag.app.service;
 
 import com.kuenag.app.model.DecathlonResult;
 import com.kuenag.app.utils.Constants;
-import com.kuenag.app.utils.ObjectBuilder;
 import com.kuenag.app.utils.PropertiesUtil;
 
 import java.io.File;
@@ -14,11 +13,12 @@ import java.util.List;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import static com.kuenag.app.utils.TextVerifiable.*;
 /**
  * This is the concrete implementation of SourceReadable for
  * file method of lecture, this class reads the application.properties file
- * and perform the creation of a contact list
+ * and perform the creation of a decathlon result list
  *
  * @author Alvaro Andres Cruz Burbano
  */
@@ -55,7 +55,7 @@ public class ReadFromFile implements SourceReadable {
     };
 
     /**
-     * Contact list from file stored in customized path or default path, the parameters comes from application.properties
+     * List from file stored in customized path or default path, the parameters comes from application.properties
      * if the system cannot find the path from  app.contact.list.file.path then will use app.contact.list.file.default.path that
      * will use the file placed inside the project.
      *
@@ -70,17 +70,17 @@ public class ReadFromFile implements SourceReadable {
                 decathlonResults.add(processFileLine(linesFromFile.get(i), i));
             }
         } catch (IOException e) {
-            logger.log(Level.SEVERE, String.format("The system cannot read the file on given path: {} message: {}", PropertiesUtil.getProperty("app.decathlon.file.input.path"), e.getLocalizedMessage()));
+            logger.log(Level.SEVERE, String.format("The system cannot read the file on given path: %1$s message: %2$s", PropertiesUtil.getProperty("app.decathlon.file.input.path"), e.getLocalizedMessage()));
         }
         return decathlonResults;
     }
 
     /**
      * This method get a line from the file, tokenize the chain according to the character specified
-     * in app.contact.list.file.token.separator  property
+     * in app.decathlon.file.token.separator property
      *
      * @param line from file
-     * @return contact object according to the model
+     * @return DecathlonResult object according to the model
      */
     private DecathlonResult processFileLine(String line, int lineNumber) {
         StringTokenizer st = new StringTokenizer(line, PropertiesUtil.getProperty("app.decathlon.file.token.separator"));
@@ -88,7 +88,7 @@ public class ReadFromFile implements SourceReadable {
         if (st.countTokens() >= Constants.MIN_TOKENS_NUM) {
             decathlonResult = createDecathlonResult.mapToItem(st);
         } else {
-            logger.log(Level.SEVERE, String.format("The line #{} does not contain the minimum number of tokens required, null register in line: {}", lineNumber, line));
+            logger.log(Level.SEVERE, String.format("The line #%1$s does not contain the minimum number of tokens required, null register in line: %2$s", lineNumber, line));
         }
         return decathlonResult;
     }
@@ -115,12 +115,12 @@ public class ReadFromFile implements SourceReadable {
      */
     private String readPath() {
         if (isValidPath.test(PropertiesUtil.getProperty("app.decathlon.file.input.path"))) {
-            logger.log(Level.INFO,String.format("Read file in provided path: {}", PropertiesUtil.getProperty("app.decathlon.file.input.path")));
+            logger.log(Level.INFO,String.format("Read file in provided path: %s", PropertiesUtil.getProperty("app.decathlon.file.input.path")));
             return PropertiesUtil.getProperty("app.decathlon.file.input.path");
         } else {
             File directory = new File(""); //Retrieve the root project path
             logger.log(Level.INFO,String.format("The Path in the property is not valid, using default " +
-                    "file in project folder: {}", directory.getAbsolutePath() + Constants.DEFAULT_FILE_PATH));
+                    "file in project folder: %s", directory.getAbsolutePath() + Constants.DEFAULT_FILE_PATH));
             return directory.getAbsolutePath() + Constants.DEFAULT_FILE_PATH;
         }
     }

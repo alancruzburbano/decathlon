@@ -1,5 +1,9 @@
 package com.kuenag.app.model;
 
+/**
+ * This class is the model of one register in the origin file for results
+ * and has extra attributes to define the position and final score
+ */
 public class DecathlonResult {
 
     private String athleteName;
