@@ -6,10 +6,7 @@ import com.kuenag.app.model.TieAcumulator;
 import com.kuenag.app.service.ReadData;
 import com.kuenag.app.service.ReadDecathlonResults;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,20 +18,27 @@ import java.util.logging.Logger;
 public class OrderDecathlonResults {
 
     Logger logger = Logger.getLogger(OrderDecathlonResults.class.getName());
+    ReadData readDecathlonList;
+    DecathlonObjectTransformer decathlonObjectTransformer;
+
+    public OrderDecathlonResults() {
+        this.readDecathlonList = new ReadDecathlonResults();
+    }
 
     public Results createOrderedResultsReport(){
         logger.log(Level.INFO, "Decathlon report generation has started");
-                ReadData readContactList = new ReadDecathlonResults();
-        List<DecathlonResult> competitionResults = readContactList.readDecathlonResultsFromFile();
+        List<DecathlonResult> competitionResults = readDecathlonList.readDecathlonResultsFromFile();
+        competitionResults.stream().filter(Objects::nonNull);
         for (DecathlonResult itemResult: competitionResults) {
-            logger.log(Level.INFO, String.format("Calculating score for athelte: %s",itemResult.getAthleteName()));
+            logger.log(Level.INFO, String.format("Calculating score for athlete: %s",itemResult.getAthleteName()));
             itemResult.setTotalPoints(DecathlonFormula.evaluateDecathlonFormula(itemResult));
         }
         logger.log(Level.INFO, "Organizing results by score...");
         Collections.sort(competitionResults, Collections.reverseOrder(Comparator.comparing(o -> o.getTotalPoints())));
         Results res = new Results(definePositions(competitionResults));
-        DecathlonObjectTransformer.jaxbObjectToXML(res);
-        logger.log(Level.INFO, "Report generated, review output directory...");
+        decathlonObjectTransformer = new DecathlonObjectTransformer();
+        if(decathlonObjectTransformer.jaxbObjectToXML(res))
+            logger.log(Level.INFO, "Report generated, review output directory...");
         return res;
     }
 
@@ -43,7 +47,7 @@ public class OrderDecathlonResults {
      * @param orderedResults
      * @return
      */
-    private List<DecathlonResult>  definePositions(List<DecathlonResult> orderedResults){
+    public List<DecathlonResult>  definePositions(List<DecathlonResult> orderedResults){
         logger.log(Level.INFO, "Defining positions based on final results...");
         int index=0;
         List<TieAcumulator> tieList = new ArrayList<>();
@@ -70,7 +74,7 @@ public class OrderDecathlonResults {
         return orderedResults;
     }
 
-    private List<DecathlonResult> processTieList(List<TieAcumulator> tieList, List<DecathlonResult> orderedResults) {
+    public List<DecathlonResult> processTieList(List<TieAcumulator> tieList, List<DecathlonResult> orderedResults) {
         String tagPosition = "";
         for (TieAcumulator tie : tieList) {
             tagPosition = tagPosition + String.valueOf(tie.getIndexPosition() + 1) + "-";

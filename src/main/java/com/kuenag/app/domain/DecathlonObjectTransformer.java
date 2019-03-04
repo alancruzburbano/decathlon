@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -20,7 +22,10 @@ import java.nio.file.Paths;
  */
 public class DecathlonObjectTransformer {
 
-    public static void jaxbObjectToXML(Results resultList) {
+    static Logger logger = Logger.getLogger(DecathlonObjectTransformer.class.getName());
+
+    public boolean jaxbObjectToXML(Results resultList) {
+        boolean isCreated = true;
             try {
                 JAXBContext context = JAXBContext.newInstance(Results.class);
                 Marshaller m = context.createMarshaller();
@@ -30,8 +35,10 @@ public class DecathlonObjectTransformer {
                     m.marshal(resultList, os);
                 }
             } catch (JAXBException | IOException e) {
-                e.printStackTrace();
+                logger.log(Level.SEVERE ,String.format("Error creating xml file report: %s",e.getLocalizedMessage()));
+                isCreated = false;
             }
+            return isCreated;
     }
 
 }

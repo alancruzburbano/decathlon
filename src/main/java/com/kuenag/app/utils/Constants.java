@@ -2,7 +2,7 @@ package com.kuenag.app.utils;
 
 public final class Constants {
 
-    public static final int MIN_TOKENS_NUM = 11;
+    public static final int TOKENS_NUM = 10;
     public static final int CENTIMETRES_UNIT = 100;
     public static final int SECONDS_UNIT = 60;
     public static final String DEFAULT_FILE_PATH = "\\src\\main\\resources\\input\\results.csv";

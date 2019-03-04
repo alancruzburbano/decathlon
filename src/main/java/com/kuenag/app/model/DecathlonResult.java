@@ -20,6 +20,24 @@ public class DecathlonResult {
     private int totalPoints;
     private String position;
 
+    public DecathlonResult() {
+    }
+
+    public DecathlonResult(String athleteName, double longJump, double shotPut, double highJump, double discusThrow, double poleVault, double javelinThrow, double oneHundredMeters, double fourHundredMeters, double oneHundredTenMetersHurdles, String oneThousandFiveHundredMeters, int totalPoints) {
+        this.athleteName = athleteName;
+        this.longJump = longJump;
+        this.shotPut = shotPut;
+        this.highJump = highJump;
+        this.discusThrow = discusThrow;
+        this.poleVault = poleVault;
+        this.javelinThrow = javelinThrow;
+        this.oneHundredMeters = oneHundredMeters;
+        this.fourHundredMeters = fourHundredMeters;
+        this.oneHundredTenMetersHurdles = oneHundredTenMetersHurdles;
+        this.oneThousandFiveHundredMeters = oneThousandFiveHundredMeters;
+        this.totalPoints = totalPoints;
+    }
+
     public String getAthleteName() {
         return athleteName;
     }

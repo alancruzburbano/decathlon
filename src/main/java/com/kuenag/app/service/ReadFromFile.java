@@ -54,6 +54,63 @@ public class ReadFromFile implements SourceReadable {
         return item;
     };
 
+    protected boolean validateInputRules(StringTokenizer tokens){
+        String token = null;
+        int index = 0;
+        boolean isValid = true;
+        while(tokens.hasMoreTokens() && isValid){
+            token = tokens.nextToken();
+            switch(index){
+                case 0:{
+                    isValid = (index == 0 && isValidName.test(token)) ? true : false;
+                    break;
+                }
+                case 1:{
+                    isValid = (index == 1 && isValidDecimal.test(token)) ? true : false;
+                    break;
+                }
+                case 2:{
+                    isValid = (index == 2 && isValidDecimal.test(token)) ? true : false;
+                    break;
+                }
+                case 3:{
+                    isValid = (index == 3 && isValidDecimal.test(token)) ? true : false;
+                    break;
+                }
+                case 4:{
+                    isValid = (index == 4 && isValidDecimal.test(token)) ? true : false;
+                    break;
+                }
+                case 5:{
+                    isValid = (index == 5 && isValidDecimal.test(token)) ? true : false;
+                    break;
+                }
+                case 6:{
+                    isValid = (index == 6 && isValidDecimal.test(token)) ? true : false;
+                    break;
+                }
+                case 7:{
+                    isValid = (index == 7 && isValidDecimal.test(token)) ? true : false;
+                    break;
+                }
+                case 8:{
+                    isValid = (index == 8 && isValidDecimal.test(token)) ? true : false;
+                    break;
+                }
+                case 9:{
+                    isValid = (index == 9 && isValidDecimal.test(token)) ? true : false;
+                    break;
+                }
+                case 10:{
+                    isValid = (index == 10 && isValidTime.test(token)) ? true : false;
+                    break;
+                }
+            }
+            index++;
+        }
+        return isValid;
+    }
+
     /**
      * List from file stored in customized path or default path, the parameters comes from application.properties
      * if the system cannot find the path from  app.contact.list.file.path then will use app.contact.list.file.default.path that
@@ -65,7 +122,8 @@ public class ReadFromFile implements SourceReadable {
     public List<DecathlonResult> readItems() {
         List<DecathlonResult> decathlonResults = new ArrayList<>();
         try {
-            List<String> linesFromFile = Files.readAllLines(Paths.get(readPath()));
+            String originPathFile = readPath();
+            List<String> linesFromFile = Files.readAllLines(Paths.get(originPathFile));
             for (int i = verifyHeaders(); i < linesFromFile.size(); i++) {
                 decathlonResults.add(processFileLine(linesFromFile.get(i), i));
             }
@@ -82,11 +140,14 @@ public class ReadFromFile implements SourceReadable {
      * @param line from file
      * @return DecathlonResult object according to the model
      */
-    private DecathlonResult processFileLine(String line, int lineNumber) {
-        StringTokenizer st = new StringTokenizer(line, PropertiesUtil.getProperty("app.decathlon.file.token.separator"));
+    protected DecathlonResult processFileLine(String line, int lineNumber) {
+        String fileSeparatorCharacter = PropertiesUtil.getProperty("app.decathlon.file.token.separator");
+        StringTokenizer st = new StringTokenizer(line, fileSeparatorCharacter);
         DecathlonResult decathlonResult = null;
-        if (st.countTokens() >= Constants.MIN_TOKENS_NUM) {
-            decathlonResult = createDecathlonResult.mapToItem(st);
+        if (Constants.TOKENS_NUM != st.countTokens()) {
+            if(validateInputRules(st)) {
+                decathlonResult = createDecathlonResult.mapToItem(new StringTokenizer(line, fileSeparatorCharacter));
+            }
         } else {
             logger.log(Level.SEVERE, String.format("The line #%1$s does not contain the minimum number of tokens required, null register in line: %2$s", lineNumber, line));
         }
@@ -98,7 +159,7 @@ public class ReadFromFile implements SourceReadable {
      *
      * @return the index line where the system must start to read the file
      */
-    private int verifyHeaders() {
+    protected int verifyHeaders() {
         logger.log(Level.INFO,String.format("Validating if file has headers"));
         if ("Y".equalsIgnoreCase(PropertiesUtil.getProperty("app.decathlon.file.headers"))) {
             return 1;
@@ -113,10 +174,11 @@ public class ReadFromFile implements SourceReadable {
      *
      * @return Custom path or default path.
      */
-    private String readPath() {
-        if (isValidPath.test(PropertiesUtil.getProperty("app.decathlon.file.input.path"))) {
+    protected String readPath() {
+        String originPath = PropertiesUtil.getProperty("app.decathlon.file.input.path");
+        if (isValidPath.test(originPath)) {
             logger.log(Level.INFO,String.format("Read file in provided path: %s", PropertiesUtil.getProperty("app.decathlon.file.input.path")));
-            return PropertiesUtil.getProperty("app.decathlon.file.input.path");
+            return originPath;
         } else {
             File directory = new File(""); //Retrieve the root project path
             logger.log(Level.INFO,String.format("The Path in the property is not valid, using default " +

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<decathlonResults>
+    <results>
+        <athleteName>John Smith</athleteName>
+        <discusThrow>21.6</discusThrow>
+        <fourHundredMeters>60.39</fourHundredMeters>
+        <highJump>1.5</highJump>
+        <javelinThrow>35.81</javelinThrow>
+        <longJump>5.0</longJump>
+        <oneHundredMeters>12.57</oneHundredMeters>
+        <oneHundredTenMetersHurdles>16.43</oneHundredTenMetersHurdles>
+        <oneThousandFiveHundredMeters>5.25.72 </oneThousandFiveHundredMeters>
+        <poleVault>2.6</poleVault>
+        <position>1</position>
+        <shotPut>9.22</shotPut>
+        <totalPoints>4207</totalPoints>
+    </results>
+    <results>
+        <athleteName>Jessica Olmos</athleteName>
+        <discusThrow>30.85</discusThrow>
+        <fourHundredMeters>64.44</fourHundredMeters>
+        <highJump>1.5</highJump>
+        <javelinThrow>33.88</javelinThrow>
+        <longJump>4.84</longJump>
+        <oneHundredMeters>13.75</oneHundredMeters>
+        <oneHundredTenMetersHurdles>19.18</oneHundredTenMetersHurdles>
+        <oneThousandFiveHundredMeters>6.22.75 </oneThousandFiveHundredMeters>
+        <poleVault>2.8</poleVault>
+        <position>2</position>
+        <shotPut>10.12</shotPut>
+        <totalPoints>3597</totalPoints>
+    </results>
+    <results>
+        <athleteName>Jaan Lepp</athleteName>
+        <discusThrow>30.85</discusThrow>
+        <fourHundredMeters>68.44</fourHundredMeters>
+        <highJump>1.5</highJump>
+        <javelinThrow>33.88</javelinThrow>
+        <longJump>4.84</longJump>
+        <oneHundredMeters>13.75</oneHundredMeters>
+        <oneHundredTenMetersHurdles>19.18</oneHundredTenMetersHurdles>
+        <oneThousandFiveHundredMeters>6.22.75 </oneThousandFiveHundredMeters>
+        <poleVault>2.8</poleVault>
+        <position>3-4</position>
+        <shotPut>10.12</shotPut>
+        <totalPoints>3494</totalPoints>
+    </results>
+    <results>
+        <athleteName>Larry Linares</athleteName>
+        <discusThrow>30.85</discusThrow>
+        <fourHundredMeters>68.44</fourHundredMeters>
+        <highJump>1.5</highJump>
+        <javelinThrow>33.88</javelinThrow>
+        <longJump>4.84</longJump>
+        <oneHundredMeters>13.75</oneHundredMeters>
+        <oneHundredTenMetersHurdles>19.18</oneHundredTenMetersHurdles>
+        <oneThousandFiveHundredMeters>6.22.75 </oneThousandFiveHundredMeters>
+        <poleVault>2.8</poleVault>
+        <position>3-4</position>
+        <shotPut>10.12</shotPut>
+        <totalPoints>3494</totalPoints>
+    </results>
+    <results>
+        <athleteName>Jane Doe</athleteName>
+        <discusThrow>24.2</discusThrow>
+        <fourHundredMeters>64.72</fourHundredMeters>
+        <highJump>1.55</highJump>
+        <javelinThrow>28.2</javelinThrow>
+        <longJump>4.53</longJump>
+        <oneHundredMeters>13.04</oneHundredMeters>
+        <oneHundredTenMetersHurdles>18.74</oneHundredTenMetersHurdles>
+        <oneThousandFiveHundredMeters>6.50.76 </oneThousandFiveHundredMeters>
+        <poleVault>2.4</poleVault>
+        <position>5</position>
+        <shotPut>7.79</shotPut>
+        <totalPoints>3199</totalPoints>
+    </results>
+    <results>
+        <athleteName>Andres Cruz</athleteName>
+        <discusThrow>24.89</discusThrow>
+        <fourHundredMeters>62.06</fourHundredMeters>
+        <highJump>1.5</highJump>
+        <javelinThrow>33.48</javelinThrow>
+        <longJump>4.35</longJump>
+        <oneHundredMeters>18.43</oneHundredMeters>
+        <oneHundredTenMetersHurdles>19.05</oneHundredTenMetersHurdles>
+        <oneThousandFiveHundredMeters>6.51.01</oneThousandFiveHundredMeters>
+        <poleVault>2.2</poleVault>
+        <position>6</position>
+        <shotPut>8.64</shotPut>
+        <totalPoints>2823</totalPoints>
+    </results>
+    <results>
+        <athleteName>Felipe Olmos</athleteName>
+        <discusThrow>24.89</discusThrow>
+        <fourHundredMeters>62.06</fourHundredMeters>
+        <highJump>1.5</highJump>
+        <javelinThrow>33.48</javelinThrow>
+        <longJump>4.25</longJump>
+        <oneHundredMeters>18.43</oneHundredMeters>
+        <oneHundredTenMetersHurdles>19.05</oneHundredTenMetersHurdles>
+        <oneThousandFiveHundredMeters>6.51.01</oneThousandFiveHundredMeters>
+        <poleVault>2.2</poleVault>
+        <position>7</position>
+        <shotPut>8.64</shotPut>
+        <totalPoints>2806</totalPoints>
+    </results>
+</decathlonResults>

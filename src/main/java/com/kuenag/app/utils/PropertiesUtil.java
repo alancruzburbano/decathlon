@@ -1,17 +1,23 @@
 package com.kuenag.app.utils;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PropertiesUtil {
-    private static Properties defaultProps = new Properties();
+
+    static Logger logger = Logger.getLogger(PropertiesUtil.class.getName());
+
+    public static Properties defaultProps = new Properties();
     static {
         try {
             FileInputStream in = new FileInputStream("src/main/resources/application.properties");
             defaultProps.load(in);
             in.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            logger.log(Level.SEVERE ,String.format("Error reading property file: %s",e.getLocalizedMessage()));
         }
     }
     public static String getProperty(String key) {

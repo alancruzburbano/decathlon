@@ -11,9 +11,9 @@
         <oneHundredTenMetersHurdles>35.81</oneHundredTenMetersHurdles>
         <oneThousandFiveHundredMeters>5.25.72</oneThousandFiveHundredMeters>
         <poleVault>60.39</poleVault>
-        <position>1-2-3</position>
+        <position>1</position>
         <shotPut>5.0</shotPut>
-        <totalPoints>0</totalPoints>
+        <totalPoints>4207</totalPoints>
     </results>
     <results>
         <athleteName>Jaan Lepp</athleteName>
@@ -26,9 +26,9 @@
         <oneHundredTenMetersHurdles>33.88</oneHundredTenMetersHurdles>
         <oneThousandFiveHundredMeters>6.22.75</oneThousandFiveHundredMeters>
         <poleVault>68.44</poleVault>
-        <position>1-2-3</position>
+        <position>2</position>
         <shotPut>4.84</shotPut>
-        <totalPoints>0</totalPoints>
+        <totalPoints>3494</totalPoints>
     </results>
     <results>
         <athleteName>Jane Doe</athleteName>
@@ -41,8 +41,23 @@
         <oneHundredTenMetersHurdles>28.2</oneHundredTenMetersHurdles>
         <oneThousandFiveHundredMeters>6.50.76</oneThousandFiveHundredMeters>
         <poleVault>64.72</poleVault>
-        <position>1-2-3</position>
+        <position>3-4</position>
         <shotPut>4.53</shotPut>
-        <totalPoints>0</totalPoints>
+        <totalPoints>3199</totalPoints>
+    </results>
+    <results>
+        <athleteName>Larry Olmos</athleteName>
+        <discusThrow>1.55</discusThrow>
+        <fourHundredMeters>2.4</fourHundredMeters>
+        <highJump>7.79</highJump>
+        <javelinThrow>18.74</javelinThrow>
+        <longJump>13.04</longJump>
+        <oneHundredMeters>24.2</oneHundredMeters>
+        <oneHundredTenMetersHurdles>28.2</oneHundredTenMetersHurdles>
+        <oneThousandFiveHundredMeters>6.50.76</oneThousandFiveHundredMeters>
+        <poleVault>64.72</poleVault>
+        <position>3-4</position>
+        <shotPut>4.53</shotPut>
+        <totalPoints>3199</totalPoints>
     </results>
 </decathlonResults>
